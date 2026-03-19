@@ -8,7 +8,7 @@ A aplicação é composta por uma API REST robusta e uma interface de usuário m
 
 ## 🏗️ Estrutura do Projeto
 
-O projeto está dividido em dois diretórios principais. Para instruções detalhadas de configuração, instalação e arquitetura de cada camada, acesse os links abaixo:
+O projeto está dividido em dois diretórios principais.
 
 ### 🖥️ [Backend - API .NET](./backend/README.md)
 * **Tecnologias:** .NET 8/9, Entity Framework Core, SQL Server.
