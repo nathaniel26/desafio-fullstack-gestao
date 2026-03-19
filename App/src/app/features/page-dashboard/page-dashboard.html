@@ -1,0 +1,26 @@
+<div class="dashboard">
+
+  <header class="header">
+    <div>
+      <h2>Bem-vindo 👋</h2>
+      <p>{{ userEmail }}</p>
+    </div>
+
+    <button (click)="logout()">Sair</button>
+  </header>
+
+  <div class="cards">
+
+    <div class="card" routerLink="/usuarios">
+      <h3>👤 Usuários</h3>
+      <p>Gerenciar usuários do sistema</p>
+    </div>
+
+    <div class="card" routerLink="/produtos">
+      <h3>📦 Produtos</h3>
+      <p>Gerenciar produtos</p>
+    </div>
+
+  </div>
+
+</div>

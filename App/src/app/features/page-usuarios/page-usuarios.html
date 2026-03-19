@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="header">
+    <button class="btn-back" (click)="voltar()">⬅ Voltar</button>
+    <h2>👤 Gerenciamento de Usuários</h2>
+  </div>
+
+  <div class="form-card">
+    <h3>{{ usuarioEmEdicaoId() ? '✍️ Editando Usuário' : '➕ Cadastrar Novo Usuário' }}</h3>
+    
+    <form [formGroup]="userForm" (ngSubmit)="salvar()">
+      <input type="text" formControlName="nomeCompleto" placeholder="Nome Completo" />
+      <input type="email" formControlName="email" placeholder="E-mail" />
+      <input type="password" formControlName="senha" placeholder="Senha" />
+      
+      <div class="form-actions">
+        <button type="submit" [disabled]="userForm.invalid">
+          {{ usuarioEmEdicaoId() ? 'Atualizar Dados' : 'Salvar Usuário' }}
+        </button>
+
+        @if (usuarioEmEdicaoId()) {
+          <button type="button" class="btn-cancel" (click)="cancelarEdicao()">
+            Cancelar
+          </button>
+        }
+      </div>
+    </form>
+  </div>
+
+  <hr />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th class="text-center">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (u of service.usuarios(); track u.id) {
+      <tr>
+        <td>{{ u.nomeCompleto }}</td>
+        <td>{{ u.email }}</td>
+        <td class="text-center">
+          <button class="btn-edit" (click)="editar(u)">Editar</button>
+          <button class="btn-del" (click)="deletar(u.id)">Excluir</button>
+        </td>
+      </tr>
+      } @empty {
+      <tr>
+        <td colspan="3" class="text-center">Nenhum usuário cadastrado.</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

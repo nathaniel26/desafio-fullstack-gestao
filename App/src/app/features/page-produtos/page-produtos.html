@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="header">
+        <button class="btn-back" (click)="voltar()">⬅ Voltar</button>
+        <h2>📦 Gerenciamento de Produtos</h2>
+    </div>
+
+    <div class="form-card">
+        <h3>{{ produtoEmEdicaoId() ? '✍️ Editando Produto' : '➕ Novo Produto' }}</h3>
+        <form [formGroup]="produtoForm" (ngSubmit)="salvar()">
+            <input type="text" formControlName="titulo" placeholder="Título do Produto" />
+            <input type="text" formControlName="descricao" placeholder="Descrição" />
+            <input type="number" formControlName="quantidade" placeholder="Qtd em Estoque" />
+
+            <div class="file-input">
+                <label>Foto do Produto:</label>
+                <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" [disabled]="produtoForm.invalid">
+                    {{ produtoEmEdicaoId() ? 'Atualizar Produto' : 'Salvar Produto' }}
+                </button>
+
+                @if (produtoEmEdicaoId()) {
+                <button type="button" class="btn-cancel" (click)="cancelarEdicao()">
+                    Cancelar
+                </button>
+                }
+            </div>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Título</th>
+                <th>Qtd</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (p of service.produtos(); track p.id) {
+            <tr>
+                <td>
+                    <img [src]="'http://localhost:5110' + p.imagemUrl" class="img-thumb" alt="Produto" />
+                </td>
+                <td>{{ p.titulo }}</td>
+                <td>{{ p.quantidade }}</td>
+                <td>
+                    <button class="btn-edit" (click)="editar(p)">Editar</button>
+                    <button class="btn-del" (click)="deletar(p.id)">Excluir</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
