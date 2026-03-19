@@ -38,7 +38,7 @@ Para rodar o projeto completo localmente, siga esta ordem:
 
 1.  **Clonar:** Clonar o projeto completo
 1.  **API:** Acesse a pasta `/api`
-2.  **Frontend:** Acesse a pasta `/app`, execute `npm install` e `ng serve`.
+2.  **Frontend:** Acesse a pasta `/app`
     
 * Detalhes de como rodar no readme de cada aplicação
 
